@@ -70,13 +70,15 @@ const SearchBooks = () => {
     }
 
     try {
+
+      //TODO DELETE
       // const response = await saveBook(bookToSave, token);
 
       // if (!response.ok) {
       //   throw new Error('something went wrong!');
       // }
 
-      console.log ("@@@@@@@@@@@@@CLIENT LOG ==> SAVE BOOK Data", bookToSave )
+     
       await addBook({
         variables: { bookInput: bookToSave }
       });

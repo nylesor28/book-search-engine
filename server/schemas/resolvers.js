@@ -11,7 +11,7 @@ const resolvers = {
       if (context.user) {
         const userData = await User.findOne({ _id: context.user._id })
           .select('-__v -password')
-          .populate('savedBooks')
+   
     
         return userData;
       }
@@ -29,14 +29,14 @@ const resolvers = {
       const params = username ? { username } : {};
       return User.findOne({params})
         .select('-__v -password')
-        .populate('savedBooks')
+       
 
     },
     // get a user by id
     userById: async (parent, { _id }) => {
       return User.findOne({_id })
         .select('-__v -password')
-        .populate('savedBooks')
+    
 
     },
     //TODO POSSIBLE Delete
