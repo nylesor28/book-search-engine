@@ -74,15 +74,23 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    saveBook: async (parent, args, context) => {
+    saveBook: async (parent, {bookInput}, context) => {
+      console.log ("********SERVER LOG ==> ", "INSIDE saveBook Mutation Query")
+     // console.log(bookInput)
       if (context.user) {
     
+        console.log(context.user, bookInput)
         const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { savedBooks: {...args} } },
-          // { new: true, runValidators: true }
+          { $push: { savedBooks: bookInput}} ,
+          { new: true, runValidators: true }
         );
     
+
+        console.log("UPDATED_USER")
+        console.log(updatedUser)
+        console.log("============UPDATED_USER BOOKS===========")
+       // console.log(updatedUser.savedBooks)
         return updatedUser;
       }
     
@@ -93,8 +101,8 @@ const resolvers = {
     
         const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { savedBooks: {bookId} } },
-          // { new: true, runValidators: true }
+          { $push: { savedBooks: {bookId} } },
+           { new: true, runValidators: true }
         );
     
         return updatedUser;
