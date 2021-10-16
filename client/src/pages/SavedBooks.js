@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Jumbotron, Container, CardColumns, Card, Button } from 'react-bootstrap';
 
 
-import { useQuery } from '@apollo/client';
-import {QUERY_ME } from '../utils/queries';
+import { useQuery, useMutation } from '@apollo/client';
+import {GET_ME } from '../utils/queries';
+import {REMOVE_BOOK } from '../utils/mutations';
 
 import { getMe, deleteBook } from '../utils/API';
 import Auth from '../utils/auth';
@@ -16,8 +17,10 @@ const SavedBooks = () => {
 
   // use this to determine if `useEffect()` hook needs to run again
   //const userDataLength = Object.keys(userData).length;
-  const { loading, data } = useQuery(QUERY_ME);
+  const { loading, data } = useQuery(GET_ME);
+  const [removeBook, { error }] = useMutation(REMOVE_BOOK);
   const userData = data?.me || {}
+  console.log(data)
 
   console.log(data)
   //setUserData(data);
@@ -51,26 +54,32 @@ const SavedBooks = () => {
 
   // create function that accepts the book's mongo _id value as param and deletes the book from the database
   const handleDeleteBook = async (bookId) => {
-  //   const token = Auth.loggedIn() ? Auth.getToken() : null;
+    const token = Auth.loggedIn() ? Auth.getToken() : null;
 
-  //   if (!token) {
-  //     return false;
-  //   }
+    if (!token) {
+      return false;
+    }
 
-  //   try {
-  //     const response = await deleteBook(bookId, token);
+    try {
+      // const response = await deleteBook(bookId, token);
 
-  //     if (!response.ok) {
-  //       throw new Error('something went wrong!');
-  //     }
+      // if (!response.ok) {
+      //   throw new Error('something went wrong!');
+      // }
 
-  //     const updatedUser = await response.json();
-  //     setUserData(updatedUser);
-  //     // upon success, remove book's id from localStorage
-  //     removeBookId(bookId);
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
+     // const updatedUser = await response.json();
+      
+    // setUserData(updatedUser);
+      const updatedUser = await removeBook({
+        variables:{bookId}
+      })
+
+
+      // upon success, remove book's id from localStorage
+      removeBookId(bookId);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   // if data isn't here yet, say so
