@@ -7,7 +7,7 @@ The Book Search Engine Application allows a user to search for books and add the
 # Table of Contents 
 * [Installation](#installation)
 * [Usage](#usage)
-* [Contributing](#​contributors)
+* [Contributing](#contributors)
 * [Contact Me](#contact-me)
 * [License](#license)
 
@@ -23,8 +23,8 @@ To run locally:
 
 ## Usage
 
-### ​Application URL:  
-![Application URL](https://nylesor28-book-seach-engine.herokuapp.com/)
+### Application URL:  
+Live Site (https://nylesor28-book-seach-engine.herokuapp.com/)
 
 ```
 1. Navigate to the application URL
@@ -38,14 +38,14 @@ To run locally:
 ![Screen Print Book Search](/client/public/assets/images/book_search_engine_screenprint.png)
 
 
-## ​Contributors
-Starter Code : (https://github.com/coding-boot-camp/solid-broccoli). 
+## Contributors
+Starter Code : (https://github.com/coding-boot-camp/solid-broccoli). <br />
 To contribute code, create a branch from develop and request pull request to merge back into develop. 
 
 ## Contact Me
  Contact me via github issue [nylesor28](https://github.com/nylesor28) 
  
- ## License
+## License
    ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
     (https://choosealicense.com/licenses/mit/)
 
