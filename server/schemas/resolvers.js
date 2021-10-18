@@ -42,8 +42,7 @@ const resolvers = {
     saveBook: async (parent, {bookInput}, context) => {
 
       if (context.user) {
-    
-        console.log(context.user, bookInput)
+  
         const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },
           { $push: { savedBooks: bookInput}} ,
