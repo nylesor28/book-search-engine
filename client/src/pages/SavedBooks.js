@@ -16,9 +16,9 @@ const SavedBooks = () => {
 
   const [removeBook] = useMutation(REMOVE_BOOK)
 
-  useEffect(() => {
-    refetch();
-  }, [refetch, data]);
+  // useEffect(() => {
+  //   refetch();
+  // }, [refetch, data]);
   
 
   // create function that accepts the book's mongo _id value as param and deletes the book from the database
@@ -38,7 +38,7 @@ const SavedBooks = () => {
 
       // upon success, remove book's id from localStorage
       removeBookId(bookId);
-      refetch();
+     // refetch();
     } catch (err) {
       console.error(err);
     }
